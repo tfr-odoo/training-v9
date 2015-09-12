@@ -6,7 +6,9 @@
       <field name="name">openacademy session list</field>
       <field name="model">openacademy.session</field>
       <field name="arch" type="xml">
-        <tree>
+        <tree decoration-bf="(taken_seats &gt; 70)"
+              colors="#0000ff:duration&lt;5;red:duration&gt;15"
+              default_order="start_date">
           <field name="name"/>
           <field name="course_id" />
           <field name="instructor_id"   />

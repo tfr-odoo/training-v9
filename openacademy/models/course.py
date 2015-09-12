@@ -36,6 +36,8 @@ class openacademy(models.Model):
 class Session(models.Model):
     _name = 'openacademy.session'
 
+    _order = 'name'
+
     name = fields.Char(required=True)
     start_date = fields.Date(default=lambda self : fields.Date.today())
     end_date = fields.Date(default=lambda self : fields.Date.today())
