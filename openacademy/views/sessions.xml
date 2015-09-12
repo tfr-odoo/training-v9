@@ -120,11 +120,61 @@
         </field>
     </record>
 
+    <record model="ir.ui.view" id="openacademy.session_view_kaban">
+        <field name="name">openacademy.session_view_kaban</field>
+        <field name="model">openacademy.session</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="course_id">
+                <field name="color"/>
+                <field name="attendee_ids" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_color_{{kanban_getcolor(record.color.raw_value)}} oe_kanban_global_click_edit
+                            oe_semantic_html_override oe_kanban_card {{record.group_fancy==1
+                            ? 'oe_kanban_card_fancy' : ''}}">
+                             <div class="o_dropdown_kanban dropdown" groups="base.group_user">
+                                <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">
+                                    <span class="fa fa-bars fa-lg"/>
+                                </a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                    <t t-if="widget.editable"><li><a type="edit">Edit Session</a></li></t>
+                                    <t t-if="widget.deletable"><li><a type="delete">Delete</a></li></t>
+                                    <li><ul class="oe_kanban_colorpicker" data-field="color"/></li>
+                                </ul>
+                            </div>
+                            <div t-attf-class="oe_kanban_content">
+                                <!-- title -->
+                                Session name:
+                                <field name="name"/>
+                                <br/>
+                                Start date:
+                                <field name="start_date"/>
+                                <br/>
+                                duration:
+                                <field name="duration"/>
+                            </div>
+
+                            <div class="oe_kanban_project_avatars">
+                                <t t-foreach="record.attendee_ids.raw_value.slice(0,11)" 
+                                    t-as="attendee">
+                                   <img
+                                   t-att-src="kanban_image('res.partner', 'image_small', attendee)" 
+                                   t-att-data-member_id="attendee" style="width:30px"/>
+                                </t>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
 
     <record model="ir.actions.act_window" id="openacademy.action_session">
       <field name="name">openacademy session</field>
       <field name="res_model">openacademy.session</field>
-      <field name="view_mode">tree,form,calendar,pivot,graph</field>
+      <field name="view_mode">kanban,tree,form,calendar,pivot,graph</field>
       <field name="help" type="html">
           <p class="oe_view_nocontent_create">Create your first session</p>
       </field>

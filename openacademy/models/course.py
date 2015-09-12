@@ -54,6 +54,7 @@ class Session(models.Model):
 
     percentage_per_day = fields.Integer("%", default=100)
     attendees_count = fields.Integer(string="Attendees count", compute='_get_attendees_count', store=True)
+    color = fields.Integer()
 
     def _warning(self, title, message):
             return {
