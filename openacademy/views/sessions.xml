@@ -13,6 +13,7 @@
           <field name="start_date" />
           <field name="duration" />
           <field name="seats" />
+          <field name="taken_seats" widget="progressbar"/>
         </tree>
       </field>
     </record>
@@ -33,6 +34,7 @@
                       <field name="start_date" />
                       <field name="duration" />
                       <field name="seats" />
+                      <field name="taken_seats" widget="progressbar"/>
                   </group>
               </group>
               <label for="attendee_ids"/>
