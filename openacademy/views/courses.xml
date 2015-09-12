@@ -27,8 +27,8 @@
                   <page string="Description" name="desc" >
                       <field name="description"/>
                   </page>
-                  <page string="Description" name="desc" >
-                      A notebook example
+                  <page string="Sessions" name="sessions" >
+                      <field name="session_ids" />
                   </page>
               </notebook>
           </sheet>
