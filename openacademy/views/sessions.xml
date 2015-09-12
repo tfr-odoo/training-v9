@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <record model="ir.ui.view" id="openacademy.session_view_list">
+      <field name="name">openacademy session list</field>
+      <field name="model">openacademy.session</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="start_date" />
+          <field name="duration" />
+          <field name="seats" />
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="openacademy.session_view_form">
+      <field name="name">openacademy session form</field>
+      <field name="model">openacademy.session</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+              <group>
+                  <group>
+                      <field name="name"/>
+                      <field name="start_date" />
+                  </group>
+                  <group>
+                      <field name="duration" />
+                      <field name="seats" />
+                  </group>
+              </group>
+          </sheet>
+         </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="openacademy.session_view_search">
+      <field name="name">openacademy session search</field>
+      <field name="model">openacademy.session</field>
+      <field name="arch" type="xml">
+        <search>
+            <field name="name"/>
+         </search>
+      </field>
+    </record>
+
+
+
+    <record model="ir.actions.act_window" id="openacademy.action_session">
+      <field name="name">openacademy session</field>
+      <field name="res_model">openacademy.session</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+          <p class="oe_view_nocontent_create">Create your first session</p>
+      </field>
+    </record>
+
+
+
+    <!-- actions -->
+    <menuitem name="Sessions" id="openacademy.menu_session" parent="openacademy.menu_course_top"
+              action="openacademy.action_session"/>
+  </data>
+</openerp>
