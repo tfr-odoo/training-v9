@@ -16,6 +16,7 @@
           <field name="duration" />
           <field name="seats" />
           <field name="taken_seats" widget="progressbar"/>
+          <field name="attendees_count" />
         </tree>
       </field>
     </record>
@@ -97,11 +98,33 @@
         </field>
     </record>
 
+    <record model="ir.ui.view" id="openacademy_session_graph_view">
+        <field name="name">openacademy.session.graph</field>
+        <field name="model">openacademy.session</field>
+        <field name="arch" type="xml">
+            <graph string="Participations by Courses">
+                <field name="course_id"/>
+                <field name="attendees_count" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="openacademy_session_pivot_view">
+        <field name="name">openacademy.session.pivot</field>
+        <field name="model">openacademy.session</field>
+        <field name="arch" type="xml">
+            <pivot string="Participations by Courses">
+                <field name="course_id"/>
+                <field name="attendees_count" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
 
     <record model="ir.actions.act_window" id="openacademy.action_session">
       <field name="name">openacademy session</field>
       <field name="res_model">openacademy.session</field>
-      <field name="view_mode">tree,form,calendar</field>
+      <field name="view_mode">tree,form,calendar,pivot,graph</field>
       <field name="help" type="html">
           <p class="oe_view_nocontent_create">Create your first session</p>
       </field>

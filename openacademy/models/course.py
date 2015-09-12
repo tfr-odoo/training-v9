@@ -53,6 +53,7 @@ class Session(models.Model):
     responsible_id = fields.Many2one(related='course_id.responsible_id', readonly=True, store=True)
 
     percentage_per_day = fields.Integer("%", default=100)
+    attendees_count = fields.Integer(string="Attendees count", compute='_get_attendees_count', store=True)
 
     def _warning(self, title, message):
             return {
@@ -70,6 +71,10 @@ class Session(models.Model):
         else:
             self.taken_seats = 100.0 * len(self.attendee_ids) / self.seats
 
+    @api.one
+    @api.depends('attendee_ids')
+    def _get_attendees_count(self):
+        self.attendees_count = len(self.attendee_ids)
 
     @api.onchange('seats', 'attendee_ids')
     def _verify_valid_seats(self):
