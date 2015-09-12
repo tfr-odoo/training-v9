@@ -36,6 +36,7 @@
                             <field name="instructor_id" />
                             <field name="start_date" />
                             <field name="duration" />
+                            <field name="percentage_per_day" />
                             <field name="seats" />
                         </tree>
                       </field>
@@ -56,10 +57,8 @@
             <field name="description"/>
             <filter name="my_courses" string="My Courses"
                     domain="[('responsible_id', '=', uid)]"/>
-            <group string="Group By">
-                <filter name="by_responsible" string="Responsible"
-                        context="{'group_by': 'responsible_id'}"/>
-            </group>
+            <filter name="by_responsible" string="Responsible"
+                    context="{'group_by': 'responsible_id'}"/>
          </search>
       </field>
     </record>

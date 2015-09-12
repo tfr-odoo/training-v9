@@ -51,6 +51,8 @@ class Session(models.Model):
     taken_seats = fields.Float(string="Taken seats", compute='_taken_seats')
     level = fields.Selection(related='course_id.level')
 
+    percentage_per_day = fields.Integer("Percentage per day", default=100)
+
     def _warning(self, title, message):
             return {
               'warning': {
