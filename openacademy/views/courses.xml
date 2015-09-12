@@ -8,6 +8,7 @@
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
+          <field name="responsible_id" />
         </tree>
       </field>
     </record>
@@ -20,6 +21,7 @@
           <sheet>
               <group>
                   <field name="name"/>
+                  <field name="responsible_id" />
               </group>
               <notebook>
                   <page string="Description" name="desc" >
@@ -40,6 +42,7 @@
       <field name="arch" type="xml">
         <search>
             <field name="name"/>
+            <field name="responsible_id" />
             <field name="description"/>
          </search>
       </field>
