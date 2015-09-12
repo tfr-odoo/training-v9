@@ -10,6 +10,8 @@ class openacademy(models.Model):
     responsible_id = fields.Many2one('res.users', ondelete='set null', string="Responsible", index=True)
     session_ids = fields.One2many('openacademy.session', 'course_id', string="Sessions")
     level = fields.Selection([(1, 'Easy'), (2, 'Medium'), (3, 'Hard')], string="Difficulty Level")
+    color = fields.Integer()
+    session_count = fields.Integer("Session Count", compute="_compute_session_count")
 
     _sql_constraints = [
        ('name_description_check', 'CHECK(name != description)',
@@ -32,6 +34,12 @@ class openacademy(models.Model):
 
         default['name'] = new_name
         return super(openacademy, self).copy(default)
+
+    @api.one
+    @api.depends('session_ids')
+    def _compute_session_count(self):
+        self.session_count = len(self.session_ids)
+
 
 class Session(models.Model):
     _name = 'openacademy.session'

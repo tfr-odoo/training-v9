@@ -28,6 +28,8 @@
         'views/courses.xml',
         'views/sessions.xml',
         'views/partners.xml',
+        'views/courses_kanban.xml',
+        'data/partner.xml',
         'templates.xml',
     ],
     # only loaded in demonstration mode
