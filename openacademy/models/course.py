@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from openerp import models, fields, api
+from openerp import models, fields, api, exceptions
 
 class openacademy(models.Model):
     _name = 'openacademy.course'
@@ -58,3 +58,10 @@ class Session(models.Model):
             return self._warning("Incorrect date value", "End date is earlier then start date")
         delta = fields.Date.from_string(self.end_date) - fields.Date.from_string(self.start_date)
         self.duration = delta.days + 1
+
+
+    @api.one
+    @api.constrains('instructor_id', 'attendee_ids')
+    def _check_instructor_not_in_attendees(self):
+        if self.instructor_id and self.instructor_id in self.attendee_ids:
+            raise exceptions.ValidationError("A session's instructor can't be an attendee")
