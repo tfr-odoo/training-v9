@@ -49,6 +49,20 @@
       </field>
     </record>
 
+    <record model="ir.ui.view" id="session_calendar_view">
+        <field name="name">session.calendar</field>
+        <field name="model">openacademy.session</field>
+        <field name="arch" type="xml">
+            <calendar string="Session Calendar"
+                      date_start="start_date"
+                      date_stop="end_date"
+                      color="instructor_id">
+                <field name="name"/>
+                <field name="taken_seats" />
+            </calendar>
+        </field>
+    </record>
+
     <record model="ir.ui.view" id="openacademy.session_view_search">
       <field name="name">openacademy session search</field>
       <field name="model">openacademy.session</field>
@@ -66,7 +80,7 @@
     <record model="ir.actions.act_window" id="openacademy.action_session">
       <field name="name">openacademy session</field>
       <field name="res_model">openacademy.session</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">tree,form,calendar</field>
       <field name="help" type="html">
           <p class="oe_view_nocontent_create">Create your first session</p>
       </field>
