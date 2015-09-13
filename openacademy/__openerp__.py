@@ -29,6 +29,7 @@
         'views/sessions.xml',
         'views/partners.xml',
         'views/courses_kanban.xml',
+        'data/session_workflow.xml',
         'data/partner.xml',
         'templates.xml',
     ],
