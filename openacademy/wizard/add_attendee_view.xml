@@ -6,7 +6,7 @@
             <field name="arch" type="xml">
                 <form string="Add Attendees">
                     <group>
-                        <field name="session_id" readonly="1"/>
+                        <field name="session_ids" readonly="1"/>
                         <field name="attendee_ids"/>
                     </group>
                     <footer>
