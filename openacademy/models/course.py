@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from datetime import timedelta
-from openerp import models, fields, api, exceptions
+from openerp import models, fields, api, exceptions, _
 
 class openacademy(models.Model):
     _name = 'openacademy.course'
@@ -15,10 +15,10 @@ class openacademy(models.Model):
 
     _sql_constraints = [
        ('name_description_check', 'CHECK(name != description)',
-        "The title of the course should not be the description"),
+        _("The title of the course should not be the description")),
 
        ('name_unique', 'UNIQUE(name)',
-        "The course title must be unique"),
+        _("The course title must be unique")),
     ]
 
     @api.one
@@ -26,11 +26,11 @@ class openacademy(models.Model):
         default = dict(default or {})
 
         copied_count = self.search_count(
-            [('name', '=like', u"Copy of {}%".format(self.name))])
+            [('name', '=like', _(u"Copy of {}%".format(self.name)))])
         if not copied_count:
-            new_name = u"Copy of {}".format(self.name)
+            new_name = _(u"Copy of {}").format(self.name)
         else:
-            new_name = u"Copy of {} ({})".format(self.name, copied_count)
+            new_name = _(u"Copy of {} ({})").format(self.name, copied_count)
 
         default['name'] = new_name
         return super(openacademy, self).copy(default)
@@ -93,9 +93,9 @@ class Session(models.Model):
     @api.onchange('seats', 'attendee_ids')
     def _verify_valid_seats(self):
         if self.seats < 0:
-            return self._warning("Incorrect 'seats' value",  "The number of available seats may not be negative")
+            return self._warning(_("Incorrect 'seats' value"), _("The number of available seats may not be negative"))
         if self.seats < len(self.attendee_ids):
-            return self._warning("Too many attendees", "Increase seats or remove excess attendees")
+            return self._warning(_("Too many attendees"), _("Increase seats or remove excess attendees"))
 
 #     @api.onchange('start_date', 'end_date')
 #     def _compute_duration(self):
