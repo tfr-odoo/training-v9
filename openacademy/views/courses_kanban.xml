@@ -33,7 +33,8 @@
                                             <span><t t-esc="record.responsible_id.value"/></span>
                                         </div>
                                     </div>
-                                </div><div class="o_kanban_card_manage_pane o_invisible">
+                                </div>
+                                <div class="o_kanban_card_manage_pane o_invisible" groups="openacademy.group_manager">
                                     <div class="o_kanban_card_manage_section o_kanban_manage_reports">
                                         <div>
                                             <a type="edit">Settings</a>
@@ -46,7 +47,7 @@
                                         <ul class="oe_kanban_colorpicker" data-field="color"/>
                                     </div>
                                 </div>
-                                <div class="o_project_kanban_manage">
+                                <div class="o_project_kanban_manage" groups="openacademy.group_manager">
                                     <a class="o_kanban_manage_toggle_button" href="#">More <i class="fa fa-caret-down"/></a>
                                 </div>
                             </div>
