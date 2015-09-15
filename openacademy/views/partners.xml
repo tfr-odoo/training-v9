@@ -11,6 +11,7 @@
                     <page string="Sessions">
                         <group>
                             <field name="instructor"/>
+                            <field name="level" />
                             <field name="session_ids"/>
                         </group>
                     </page>

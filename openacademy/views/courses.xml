@@ -9,6 +9,7 @@
         <tree>
           <field name="name"/>
           <field name="responsible_id" />
+          <field name="level" />
         </tree>
       </field>
     </record>
@@ -22,6 +23,7 @@
               <group>
                   <field name="name"/>
                   <field name="responsible_id" />
+                  <field name="level" />
               </group>
               <notebook>
                   <page string="Description" name="desc" >
