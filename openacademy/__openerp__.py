@@ -24,10 +24,10 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
+        'data/partner.xml',
         'views/courses.xml',
         'views/sessions.xml',
         'views/partners.xml',
-        'data/partner.xml',
         'templates.xml',
     ],
     # only loaded in demonstration mode

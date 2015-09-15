@@ -9,7 +9,7 @@
         <tree>
           <field name="name"/>
           <field name="course_id" />
-          <field name="instructor_id" />
+          <field name="instructor_id"   />
           <field name="start_date" />
           <field name="duration" />
           <field name="seats" />
@@ -27,7 +27,7 @@
                   <group>
                       <field name="name"/>
                       <field name="course_id" />
-                      <field name="instructor_id" />
+                      <field name="instructor_id" domain="['|', ('instructor', '=', True), ('category_id', 'in', [%(openacademy.teacher1)d, %(openacademy.teacher2)d])]" />
                   </group>
                   <group>
                       <field name="start_date" />
