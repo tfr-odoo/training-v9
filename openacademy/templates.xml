@@ -2,8 +2,8 @@
     <data>
         <template id="index">
             <title>Academy</title>
-            <t t-foreach="teachers" t-as="teacher">
-              <p><t t-esc="teacher"/></p>
+            <t t-foreach="courses" t-as="course">
+              <p><t t-esc="course.id"/> <t t-esc="course.name"/></p>
             </t>
         </template>
     </data>
