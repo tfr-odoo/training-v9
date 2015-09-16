@@ -49,9 +49,10 @@ class Session(models.Model):
     course_id = fields.Many2one('openacademy.course', ondelete='cascade', string="Course", required=True)
     attendee_ids = fields.Many2many('res.partner', string="Attendees", domain=[('company_type', '=', 'person')])
     taken_seats = fields.Float(string="Taken seats", compute='_taken_seats')
-    level = fields.Selection(related='course_id.level')
+    level = fields.Selection(related='course_id.level', readonly=True)
+    responsible_id = fields.Many2one(related='course_id.responsible_id', readonly=True, store=True)
 
-    percentage_per_day = fields.Integer("Percentage per day", default=100)
+    percentage_per_day = fields.Integer("%", default=100)
 
     def _warning(self, title, message):
             return {
