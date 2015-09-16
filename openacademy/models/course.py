@@ -6,7 +6,8 @@ class openacademy(models.Model):
     _name = 'openacademy.course'
     _inherit = 'mail.thread'
 
-    name = fields.Char(name='Title', required=True)
+    _inherits = {'product.template' : 'product_id' }
+
     description = fields.Text()
     responsible_id = fields.Many2one('res.users', ondelete='set null', string="Responsible", index=True)
     session_ids = fields.One2many('openacademy.session', 'course_id', string="Sessions")
