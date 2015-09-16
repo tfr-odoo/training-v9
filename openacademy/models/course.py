@@ -146,3 +146,23 @@ class Session(models.Model):
     @api.one
     def action_done(self):
         self.state = 'done'
+
+    def _auto_transition(self):
+        """
+            Don't use this implementation in production it may have bad performance
+        """
+        if self.taken_seats >= 50.0 and self.state == 'draft':
+            self.state = 'confirmed'
+
+    @api.multi
+    def write(self, vals):
+        res = super(Session, self).write(vals)
+        for rec in self:
+            rec._auto_transition()
+        return res
+
+    @api.model
+    def create(self, vals):
+        res = super(Session, self).create(vals)
+        res._auto_transition()
+        return res
