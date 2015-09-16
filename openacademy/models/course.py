@@ -4,6 +4,7 @@ from openerp import models, fields, api, exceptions, _
 
 class openacademy(models.Model):
     _name = 'openacademy.course'
+    _inherit = 'mail.thread'
 
     name = fields.Char(name='Title', required=True)
     description = fields.Text()
