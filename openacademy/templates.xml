@@ -33,7 +33,9 @@
                 <div class="oe_structure"/>
                 <div class="oe_structure">
                     <div class="container">
-                        <p><t t-esc="session.id"/> <t t-esc="session.name"/></p>
+                        <h3 t-field="session.name"/>
+                        <p>Last modified: <i t-field="session.write_date" t-field-options='{"format": "long"}'/></p>
+                        <div t-field="session.description" />
                         <p>Course : <t t-esc="session.course_id.name"/> </p>
                         <p>Nbr Attendee: <t t-esc="session.attendees_count"/></p>
                     </div>
