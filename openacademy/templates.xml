@@ -12,6 +12,13 @@
                                 <t t-esc="course.id"/>
                                 <t t-esc="course.name"/>
                             </p>
+                            <p><t t-esc="course.id"/> <t t-esc="course.name"/></p>
+                            <p>Sessions</p>
+                            <ul>
+                                <t t-foreach="course.session_ids" t-as="session">
+                                    <li><a t-attf-href="/academy/{{ slug(session) }}"><t t-esc="session.name"/></a></li>
+                                </t>
+                            </ul>
                         </t>
                     </div>
                 </div>
@@ -19,9 +26,30 @@
                 </div>
             </t>
         </template>
-        
+
         <template id="session">
-             <t t-call="website.layout">
+            <t t-call="website.layout">
+                <t t-set="title">Academy</t>
+                <div class="oe_structure"/>
+                <div class="oe_structure">
+                    <div class="container">
+                        <p><t t-esc="session.id"/> <t t-esc="session.name"/></p>
+                        <p>Course : <t t-esc="session.course_id.name"/> </p>
+                        <p>Nbr Attendee: <t t-esc="session.attendees_count"/></p>
+                    </div>
+                    <h3>Attendees:</h3>
+                    <ul>
+                        <t t-foreach="session.attendee_ids" t-as="attendee">
+                            <li><span t-field="attendee.name"/></li>
+                        </t>
+                    </ul>
+                </div>
+                <div class="oe_structure"/>
+            </t>
+        </template>
+        
+        <template id="session_list">
+               <t t-call="website.layout">
             <t t-set="title">Session</t>
              <div class="oe_structure">
                     <div class="container">

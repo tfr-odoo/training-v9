@@ -5,3 +5,4 @@ course_read_all,course all,model_openacademy_course,group_user,1,0,0,0
 session_read_all,session all,model_openacademy_session,group_user,1,0,0,0
 course_read_public,course all,model_openacademy_course,,1,0,0,0
 session_read_public,session all,model_openacademy_session,,1,0,0,0
+partner_read_public,course all,model_res_partner,,1,0,0,0
