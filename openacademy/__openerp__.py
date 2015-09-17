@@ -24,13 +24,13 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
+        'security/security.xml',
+        'security/ir.model.access.csv',
         'data/partner.xml',
         'views/courses.xml',
         'views/sessions.xml',
         'views/partners.xml',
         'views/courses_kanban.xml',
-        'security/security.xml',
-        'security/ir.model.access.csv',
         'data/session_workflow.xml',
         'data/partner.xml',
         'templates.xml',
