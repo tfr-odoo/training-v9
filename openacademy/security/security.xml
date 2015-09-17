@@ -11,6 +11,12 @@
             <field name="implied_ids" eval="[(6,0,[ref('group_user')])]" />
         </record>
 
+        <record id="group_admin" model="res.groups">
+            <field name="name">Admin</field>
+            <field name="category_id" ref="base.module_category_academy"/>
+            <field name="implied_ids" eval="[(6,0,[ref('group_manager')])]" />
+        </record>
+
          <record id="only_responsible_can_modify" model="ir.rule">
             <field name="name">Only Responsible can modify Course</field>
             <field name="model_id" ref="model_openacademy_course"/>
@@ -22,6 +28,19 @@
             <field name="domain_force">
                 ['|', ('responsible_id','=',False),
                       ('responsible_id','=',user.id)]
+            </field>
+        </record>
+
+        <record id="admin_rule" model="ir.rule">
+            <field name="name">Admin Can do everything</field>
+            <field name="model_id" ref="model_openacademy_course"/>
+            <field name="groups" eval="[(4, ref('openacademy.group_admin'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+            <field name="domain_force">
+                [(1, '=', 1)]
             </field>
         </record>
     </data>
