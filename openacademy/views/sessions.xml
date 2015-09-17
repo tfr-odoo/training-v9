@@ -29,13 +29,13 @@
           <header>
             <button name="draft" type="workflow"
                 string="Reset to draft"
-                attrs="{'invisible' : [('state', '=', 'draft')] }" />
+                attrs="{'invisible' : [('state', '=', 'draft')] }"  groups="openacademy.group_manager" />
             <button name="confirm" type="workflow"
                 string="Confirm" attrs="{'invisible' : [('state', 'in', ('confirmed', 'done'))] }"
-                class="oe_highlight"/>
+                class="oe_highlight"  groups="openacademy.group_manager"/>
             <button name="done" type="workflow"
                 string="Mark as done" attrs="{'invisible' : [('state', 'in', ('draft', 'done'))] }"
-                class="oe_highlight"/>
+                class="oe_highlight"  groups="openacademy.group_manager"/>
             <field name="state" widget="statusbar"/>
           </header>
           <sheet>
@@ -52,8 +52,8 @@
                       <field name="start_date" />
                       <field name="end_date" />
                       <field name="duration" />
-                      <label for="percentage_per_day" string="Percentage per day" />
-                      <field name="percentage_per_day" nolabel="1"/>
+                      <label for="percentage_per_day" string="Percentage per day" groups="openacademy.group_manager"/>
+                      <field name="percentage_per_day" nolabel="1" groups="openacademy.group_manager"/>
                       <field name="seats" />
                       <field name="taken_seats" widget="progressbar"/>
                   </group>
@@ -201,7 +201,7 @@
     </record>
 
     <menuitem name="Scheduling" id="openacademy.menu_scheduling"
-              parent="openacademy.menu_root" />
+              parent="openacademy.menu_root" groups="group_manager" />
     <menuitem name="Sessions" id="openacademy.menu_session_scheduling"
               parent="openacademy.menu_scheduling"
               action="openacademy.action_session_schedule"/>
