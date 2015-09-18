@@ -12,13 +12,12 @@
                                 <t t-esc="course.id"/>
                                 <t t-esc="course.name"/>
                             </p>
-                            <p><t t-esc="course.id"/> <t t-esc="course.name"/></p>
                             <p>Sessions</p>
-                            <ul>
                                 <t t-foreach="course.session_ids" t-as="session">
-                                    <li><a t-attf-href="/academy/{{ slug(session) }}"><t t-esc="session.name"/></a></li>
+                                    <p><a t-attf-href="/academy/{{ slug(session) }}"><t t-esc="session.name"/></a></p>
+                                    <p>Last modified: <i t-field="session.write_date" t-field-options='{"format": "long"}' /></p>
+                                    <div t-field="session.description" />
                                 </t>
-                            </ul>
                         </t>
                     </div>
                 </div>
