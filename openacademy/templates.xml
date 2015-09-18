@@ -1,9 +1,18 @@
 <openerp>
     <data>
-        <template id="index">
-            <title>Academy</title>
+        <template id="course">
+            <title>Course</title>
             <t t-foreach="courses" t-as="course">
               <p><t t-esc="course.id"/> <t t-esc="course.name"/></p>
+            </t>
+        </template>
+
+        <template id="session">
+            <title>Session</title>
+            <t t-foreach="sessions" t-as="session">
+              <h2><t t-esc="session.name"/></h2>
+              <p>id: <t t-esc="session.id"/>, course: <t t-esc="session.course_id.name"/></p>
+              <p>nbr_seats: <t t-esc="session.seats"/>, nbr attendee: <t t-esc="session.attendees_count"/></p>
             </t>
         </template>
     </data>
