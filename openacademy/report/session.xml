@@ -27,5 +27,9 @@
                 </t>
             </t>
         </template>
+
+        <record id="openacademy.report_session" model="ir.actions.report.xml">
+            <field name="report_type">qweb-html</field>
+        </record>
     </data>
 </openerp>
