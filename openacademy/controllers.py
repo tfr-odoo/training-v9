@@ -10,7 +10,7 @@ class Academy(http.Controller):
             'courses': courses,
         })
 
-    @http.route('/academy/session/', auth='public')
+    @http.route('/academy/session/', auth='public', website=True)
     def session(self, **kw):
         sessions = http.request.env['openacademy.session'].search([])
         return http.request.render('openacademy.session', {

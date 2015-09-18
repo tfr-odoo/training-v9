@@ -21,7 +21,10 @@
         </template>
         
         <template id="session">
-            <title>Session</title>
+             <t t-call="website.layout">
+            <t t-set="title">Session</t>
+             <div class="oe_structure">
+                    <div class="container">
             <t t-foreach="sessions" t-as="session">
                 <h2>
                     <t t-esc="session.name"/>
@@ -38,7 +41,7 @@
                     , nbr attendee:
                     <t t-esc="session.attendees_count"/>
                 </p>
-            </t>
+            </t></div></div></t>
         </template>
     </data>
 </openerp>
